@@ -8,12 +8,14 @@ This is a panel plugin for generating Sankey diagrams in Grafana 7.0+.  Sankey d
 ![](https://github.com/netsage-project/netsage-sankey-panel/blob/master/src/img/sankey2.png?raw=true)
 
 ## How it works
+
 The sankey panel requires at least 2 columns of data, a source and destination for the flows. This means your query should group your data into at least two groups.  The screenshot above shows data grouped by source country, then by destination county.
 The panel will draw links from the first column of data points, to the last in order of the query.  The thickness of the links will be proportionate to the value as assigned by the metric in the query.
 
 ![](https://github.com/netsage-project/netsage-sankey-panel/blob/master/src/img/sankey3.png?raw=true)
 
 ## Customizing
+
 - **Links:** There are currently two options for link color: multi or single.  It is multi-colored by default.  To choose a single color for the links, toggle the "Single Link color only" option and choose your color from Grafana's color picker.
 - **Nodes:** You can change the color of the rectangular nodes by changing the "Node color" option
 - **Node Width** The width of the nodes can be adjusted with the "Node Width" slider or entering a number in the input box.  This number must be an integer.
@@ -21,4 +23,20 @@ The panel will draw links from the first column of data points, to the last in o
 - **Headers** The column headers can be changed by using a Display Name override in the editor panel.  They will be the same color you choose for Text color
 - **Sankey Layout** The layout of the sankey links can be adjusted slightly using the "Layout iteration" slider. This number must be an integer and is the number of relaxation iterations used to generate the layout.
 
+## Building
 
+sudo dnf module enable nodejs
+
+dnf module list nodejs
+
+dnf module enable nodejs:22 -y
+
+dnf install git nodejs npm
+
+git clone <https://github.com/koumajos/netsage-sankey-panel.git>
+
+cd netsage-sankey-panel/
+
+npm install
+
+npm run build
