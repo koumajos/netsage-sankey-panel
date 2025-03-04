@@ -177,7 +177,7 @@ export function parseData(data: { series: any[] }, options: { valueField: any },
   frame.forEach((row) => {
     let currentLink: number[] = [];
     // go through columns to find all nodes
-    for (let i = 0; i < numFields; i++) {
+    for (let i = 0; i < numFields - 1; i++) {
       let node = row[i];
       let index = pluginDataNodes.findIndex((e) => e.name === node && e.colId === i);
       if (index === -1) {
@@ -196,18 +196,18 @@ export function parseData(data: { series: any[] }, options: { valueField: any },
     let rowColor = col0.find((e) => e.index === currentLink[0])?.color;
     let rowDisplay = `${pluginDataNodes[currentLink[0]].name}`;
     for (let i = 0; i < currentLink.length - 1; i++) {
-      let fieldValues = valueField[0].display(row[numFields]);
+      let fieldValues = valueField[0].display(row[numFields-1]);
       let displayValue;
       if (fieldValues.suffix) {
-        displayValue = `${fieldValues.text} ${fieldValues.suffix}`;
+        displayValue = `${fieldValues.text} ${fieldValues.suffix} \(${Number(row[numFields]).toFixed(3)}\%\)`;
       } else {
-        displayValue = `${fieldValues.text}`;
+        displayValue = `${fieldValues.text} \(${Number(row[numFields]).toFixed(3)}\%\)`;
       }
 
       pluginDataLinks.push({
         source: currentLink[i],
         target: currentLink[i + 1],
-        value: row[numFields],
+        value: row[numFields-1],
         displayValue: displayValue,
         id: `row${rowId}`,
         color: rowColor,
