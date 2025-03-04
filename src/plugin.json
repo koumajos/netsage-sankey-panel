@@ -1,10 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
   "type": "panel",
-  "name": "Sankey Panel",
-  "id": "netsage-sankey-panel",
+  "name": "Sankey Panel with percentage",
+  "id": "netsage-sankey-panel-with-percentage",
   "info": {
-    "description": "Sankey Panel Plugin for Grafana",
+    "description": "Sankey Panel Plugin with percentage for Grafana",
     "author": {
       "name": "NetSage",
       "url": "http://github.com/netsage-project"
