@@ -46,8 +46,8 @@ export const Tooltip: React.FC<TooltipProps> = ({ rowNames, field, panelId }) =>
           .style('color', 'white')
           .style('border', '#A8A8A8 solid 2px')
           .style('border-radius', '5px')
-          .style('left', mousePosition.mouseX + 'px')
-          .style('top', mousePosition.mouseY + 'px')
+          .style('left', mousePosition.mouseX + window.scrollX + 'px')
+          .style('top', mousePosition.mouseY + window.scrollY + 'px')
           .style('opacity', 0)
           .style('z-index','1')
           .style('position', 'absolute');
